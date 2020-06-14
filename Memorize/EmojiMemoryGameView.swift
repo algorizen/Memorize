@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiMemoryGameView.swift
 //  Memorize
 //
 //  Created by zen on 5/31/20.
@@ -31,22 +31,22 @@ struct CardView: View {
         }
     }
     
+    @ViewBuilder
     private func body(for size: CGSize) -> some View {
-        ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
+        if card.isFaceUp || !card.isMatched {
+            ZStack {
+                Pie(startAngle: Angle.degrees(0-90), endAngle: Angle.degrees(10), clockwise: true)
+                    .padding(5).opacity(0.4)
                 Text(card.content)
-            } else {
-                if !card.isMatched {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill()
-                }
+                    .font(Font.system(size: fontSize(for: size)))
             }
+            .cardify(isFaceUp: card.isFaceUp)
         }
-        .font(Font.system(size: fontSize(for: size)))
+        
     }
     
-    private let cornerRadius: CGFloat = 10.0
-    private let edgeLineWidth: CGFloat = 2
+    // MARK: Drawing Constants
+    
     private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * 0.75
     }
@@ -54,6 +54,9 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiMemoryGameView(viewModel: EmojiMemoryGame())
+        let game = EmojiMemoryGame()
+        game.choose(card: game.cards[0])
+//        EmojiMemoryGameView(viewModel: EmojiMemoryGame())
+        return EmojiMemoryGameView(viewModel: game)
     }
 }
