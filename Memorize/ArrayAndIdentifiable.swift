@@ -2,7 +2,7 @@
 //  ArrayAndIdentifiable.swift
 //  Memorize
 //
-//  Created by K.v on 6/14/20.
+//  Created by zen on 6/14/20.
 //  Copyright © 2020 Evoluteix. All rights reserved.
 //
 

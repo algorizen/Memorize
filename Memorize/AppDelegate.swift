@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Memorize
 //
-//  Created by zen on 5/31/20.
+//  Created by zen on 6/7/20.
 //  Copyright © 2020 Evoluteix. All rights reserved.
 //
 
